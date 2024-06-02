@@ -52,56 +52,105 @@ function App() {
   }));
   return (
     <div className="App">
-      <h1>DASHBOARD</h1>
-      <h2>Bar Chart</h2>
-      <ResponsiveContainer width="80%" height={400}>
-        <BarChart data={chartData}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="category" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="count" fill="#007bff" />
-        </BarChart>
-      </ResponsiveContainer>
+      <nav className="navbar">
+        <div className="logo">
+          <h1>
+            <span style={{ color: "yellow" }}>MY</span>Dash
+          </h1>
+        </div>
+        <div className="nav-right">
+          <a href="#barchart">ALERT DISTRIBUTION | </a>
+          <a href="#piechart"> ALERT PROPORTION | </a>
+          <a href="#linechart"> AlERT TRENDS | </a>
+          <a href="#areachart"> CUMULATIVE COUNT OF ALERTS </a>
+        </div>
+      </nav>
+      <div>
+        <div className="description">
+          <h2 id="barchart">Distribution of Alerts by category</h2>
+          <p>
+            This bar chart shows the distribution of network security alerts
+            across different categories. It helps in understanding which types
+            of alerts are most common and can assist in prioritizing security
+            measures.
+          </p>
+        </div>
 
-      <h2>Pie Chart</h2>
-      <ResponsiveContainer width="80%" height={400}>
-        <PieChart>
-          <Pie
-            data={chartData}
-            dataKey="count"
-            nameKey="category"
-            cx="50%"
-            cy="50%"
-            outerRadius={80}
-            fill="#007bff"
-            label
-          />
-          <Tooltip />
-          <Legend />
-        </PieChart>
-      </ResponsiveContainer>
-      <h2>Line Chart</h2>
-      <ResponsiveContainer width="80%" height={400}>
-        <LineChart data={chartData}>
-          <Line stroke="#007bff" dataKey="count" />
-          <XAxis dataKey="category" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-        </LineChart>
-      </ResponsiveContainer>
-      <h2>Area Chart</h2>
-      <ResponsiveContainer width="80%" height={400}>
-        <AreaChart data={chartData}>
-          <Area stroke="#007bff" fill="#007bff" dataKey="count" />
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="category" />
-          <YAxis />
-          <Tooltip />
-        </AreaChart>
-      </ResponsiveContainer>
+        <ResponsiveContainer width="80%" height={400}>
+          <BarChart data={chartData}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="category" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="count" fill="yellow" />
+          </BarChart>
+        </ResponsiveContainer>
+        <div className="description">
+          <h2 id="piechart">Proportion of Alert Categories</h2>
+          <p>
+            The pie chart visualizes the proportion of each category of alerts
+            relative to the total number of alerts. This provides a clear
+            overview of the relative frequency of different types of network
+            threats.
+          </p>
+        </div>
+        <ResponsiveContainer width="80%" height={400}>
+          <PieChart>
+            <Pie
+              data={chartData}
+              dataKey="count"
+              nameKey="category"
+              cx="50%"
+              cy="50%"
+              outerRadius={80}
+              fill="yellow"
+              label
+            />
+            <Tooltip />
+            <Legend />
+          </PieChart>
+        </ResponsiveContainer>
+        <div className="description">
+          <h2 id="linechart">Trends in Alerts Over Time</h2>
+          <p>
+            The line chart depicts the trend of alerts over time for each
+            category. This helps in identifying periods of increased activity
+            and can be useful for spotting trends or patterns in security
+            incidents.
+          </p>
+        </div>
+
+        <ResponsiveContainer width="80%" height={400}>
+          <LineChart data={chartData}>
+            <Line stroke="yellow" dataKey="count" />
+            <XAxis dataKey="category" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+          </LineChart>
+        </ResponsiveContainer>
+
+        <div className="description">
+          <h2 id="areachart">Cumulative Count of Alerts by Category</h2>
+          <p>
+            The area chart illustrates the cumulative count of alerts over time
+            by category. This gives a sense of the overall volume of alerts and
+            the growth of each category, which can be important for long-term
+            analysis and resource planning.
+          </p>
+        </div>
+        <ResponsiveContainer width="80%" height={400}>
+          <AreaChart data={chartData}>
+            <Area stroke="yellow" fill="yellow" dataKey="count" />
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="category" />
+            <YAxis />
+            <Tooltip />
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
+      <footer>COPYRIGHT © CHAVI SINGHAL * WIJUNGLE</footer>
     </div>
   );
 }
